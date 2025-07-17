@@ -59,4 +59,12 @@ public class PropertiesLoader {
         return Integer.parseInt(properties.getProperty("NEW_COMMAND_TIMEOUT"));
     }
 
+    public String getUsername() {
+        return properties.getProperty("USERNAME");
+    }
+
+    public String getPassword() {
+        return properties.getProperty("PASSWORD");
+    }
+
 }

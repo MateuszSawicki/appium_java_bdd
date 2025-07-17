@@ -9,20 +9,23 @@ import io.cucumber.java.Before;
 import org.jetbrains.annotations.NotNull;
 import utils.FailureHandler;
 
+import java.net.MalformedURLException;
+import java.net.URISyntaxException;
+
 public class Hooks extends BaseTest {
     private final FailureHandler failureHandler = new FailureHandler();
 
-    @Before
-    public void beforeScenario() {
-        mobileDriverFactory.getDriver().launchApp();
-    }
+//    @Before
+//    public void beforeScenario() throws MalformedURLException, URISyntaxException {
+//        mobileDriverFactory.createLocalAndroidDriver();
+//    }
 
     @After
     public void afterScenario(@NotNull Scenario scenario) {
-        if (scenario.isFailed()) {
-            failureHandler.takeScreenshot(scenario);
-            System.out.println(mobileDriverFactory.getScreenSource());
-        }
-        mobileDriverFactory.getDriver().closeApp();
+//        if (scenario.isFailed()) {
+//            failureHandler.takeScreenshot(scenario);
+//            System.out.println(mobileDriverFactory.getScreenSource());
+
+        mobileDriverFactory.getDriver().quit();
     }
 }

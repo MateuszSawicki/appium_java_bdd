@@ -1,34 +1,37 @@
 package utils;
 
-import io.appium.java_client.MobileDriver;
-import io.appium.java_client.MobileElement;
+import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import io.appium.java_client.android.AndroidDriver;
 
 import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.concurrent.TimeUnit;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.time.Duration;
 
 public class MobileDriverFactory {
-    MobileDriver<MobileElement> driver;
+    AppiumDriver driver;
     PropertiesLoader propertiesLoader = new PropertiesLoader();
 
-    public void createLocalAndroidDriver() throws MalformedURLException {
+    public void createLocalAndroidDriver() throws MalformedURLException, URISyntaxException {
         DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability("deviceName", "Samsung");
-        capabilities.setCapability("automationName", propertiesLoader.getAutomationName());
-        capabilities.setCapability("platformName", "Android");
-        capabilities.setCapability("app", propertiesLoader.getAppPathAndroid());
-        capabilities.setCapability("disableWindowAnimation", true);
-        capabilities.setCapability("newCommandTimeout", propertiesLoader.getNewCommandTimeout());
-        driver = new AndroidDriver<>(new URL("http://0.0.0.0:4723/wd/hub"), capabilities);
+        capabilities.setCapability("appium:deviceName", "emulator-5554");
+        capabilities.setCapability("appium:automationName", propertiesLoader.getAutomationName());
+        capabilities.setCapability("appium:platformName", "Android");
+        capabilities.setCapability("appium:platformVersion", "15.0");
+        capabilities.setCapability("appium:app", propertiesLoader.getAppPathAndroid());
+        capabilities.setCapability("appium:newCommandTimeout", propertiesLoader.getNewCommandTimeout());
+        capabilities.setCapability("appium:appPackage", "com.swaglabsmobileapp");
+        capabilities.setCapability("appium:appActivity", "com.swaglabsmobileapp.SplashActivity");
+        driver = new AndroidDriver(new URI("http://0.0.0.0:4723").toURL(), capabilities);
+
     }
 
     public void setImplicitlyWait() {
-        driver.manage().timeouts().implicitlyWait(propertiesLoader.getImplicitWait(), TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(propertiesLoader.getImplicitWait()));
     }
 
-    public MobileDriver<MobileElement> getDriver() {
+    public AppiumDriver getDriver() {
         return driver;
     }
 

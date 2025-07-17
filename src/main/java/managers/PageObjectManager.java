@@ -1,14 +1,13 @@
 package managers;
 
-import io.appium.java_client.MobileDriver;
-import io.appium.java_client.MobileElement;
+import io.appium.java_client.AppiumDriver;
 import screens.LoginScreen;
 
 public class PageObjectManager {
-    MobileDriver<MobileElement> mobileDriver;
+    AppiumDriver mobileDriver;
     LoginScreen loginScreen;
 
-    public PageObjectManager(MobileDriver<MobileElement> mobileDriver) {
+    public PageObjectManager(AppiumDriver mobileDriver) {
         this.mobileDriver = mobileDriver;
     }
 
