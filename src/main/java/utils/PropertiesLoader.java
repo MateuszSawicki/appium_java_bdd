@@ -55,6 +55,10 @@ public class PropertiesLoader {
         return Long.parseLong(properties.getProperty("IMPLICIT_WAIT"));
     }
 
+    public Integer getExplicitWait() {
+        return Integer.parseInt(properties.getProperty("EXPLICIT_WAIT"));
+    }
+
     public Integer getNewCommandTimeout() {
         return Integer.parseInt(properties.getProperty("NEW_COMMAND_TIMEOUT"));
     }
