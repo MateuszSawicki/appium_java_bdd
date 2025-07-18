@@ -7,6 +7,6 @@ Feature: Purchase
     When the user checks out
     And the user fills in required information
     Then payment details are displayed
-#    When the user clicks finish
-#    Then the complere purchase screen is displayed
+    When the user clicks finish
+    Then the complete purchase screen is displayed
 

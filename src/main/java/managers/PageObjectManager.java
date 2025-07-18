@@ -10,6 +10,7 @@ public class PageObjectManager {
     YourCartScreen yourCartScreen;
     CheckoutInformationScreen checkoutInformationScreen;
     CheckoutOverviewScreen checkoutOverviewScreen;
+    CheckoutCompleteScreen checkoutCompleteScreen;
 
     public PageObjectManager(AppiumDriver mobileDriver) {
         this.mobileDriver = mobileDriver;
@@ -38,5 +39,10 @@ public class PageObjectManager {
     public CheckoutOverviewScreen getCheckoutOverviewScreen() {
         return (checkoutOverviewScreen == null) ? checkoutOverviewScreen = new CheckoutOverviewScreen(this.mobileDriver):
                 checkoutOverviewScreen;
+    }
+
+    public CheckoutCompleteScreen getCheckoutCompleteScreen() {
+        return (checkoutCompleteScreen == null) ? checkoutCompleteScreen = new CheckoutCompleteScreen(this.mobileDriver):
+                checkoutCompleteScreen;
     }
 }

@@ -37,6 +37,17 @@ public class PurchaseSteps extends BaseTest {
 
     @Then("payment details are displayed")
     public void paymentDetailsAreDisplayed() {
-        pages.getCheckoutOverviewScreen().isTextDisplayed("Sauce Labs Backpack");
+        Assert.assertTrue(pages.getCheckoutOverviewScreen().isTextDisplayed("Sauce Labs Backpack"));
+    }
+
+    @When("the user clicks finish")
+    public void theUserClicksFinish() {
+        pages.getCheckoutOverviewScreen().scrollDown();
+        pages.getCheckoutOverviewScreen().clickFinish();
+    }
+
+    @Then("the complete purchase screen is displayed")
+    public void theCompletePurchaseScreenIsDisplayed() {
+        Assert.assertTrue(pages.getCheckoutCompleteScreen().isOrderSuccessLblDisplayed());
     }
 }

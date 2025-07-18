@@ -14,18 +14,23 @@ public class CheckoutOverviewScreen extends BaseScreen {
     @AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc='test-Description']/*[1]")
     WebElement lblFirstPurchasedItem;
 
-//    @AndroidFindBy(accessibility = "")
-//    WebElement btnFinish;
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='FINISH']")
+    WebElement btnFinish;
+
+
 
     public boolean isTextDisplayed(String Text) {
         return isGivenTextDisplayed(lblFirstPurchasedItem, Text);
     }
+
+    public void scrollDown() {
+        swipeFromToFraction(0.5, 0.8, 0.5, 0.2, 500);
+    }
+
+    public void clickFinish() {
+        click(btnFinish);
+    }
+
+
 }
-//    public void scrollDown() {
-//    }
-
-//    public void clickContinue() {
-//        click(btnContinue);
-//    }
-
 
