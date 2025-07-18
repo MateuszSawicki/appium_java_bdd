@@ -16,6 +16,9 @@ public class LoginScreen extends BaseScreen {
     @AndroidFindBy(accessibility = "test-LOGIN")
     WebElement loginBtn;
 
+    @AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc='test-Error message']/*[1]")
+    WebElement lblErrorMessage;
+
     public LoginScreen(AppiumDriver mobileDriver) {
         super(mobileDriver);
     }
@@ -26,6 +29,10 @@ public class LoginScreen extends BaseScreen {
 
     public void enterPassword(String password) {
             sendKeys(txtPassword, password);
+    }
+
+    public boolean isErrorMessageDisplayed(String ErrorMessage) {
+        return isGivenTextDisplayed(lblErrorMessage, ErrorMessage);
     }
 
     public void clickLoginBtn() {

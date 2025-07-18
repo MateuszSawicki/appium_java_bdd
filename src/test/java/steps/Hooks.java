@@ -1,31 +1,27 @@
 package steps;
 
-
 import base.BaseTest;
 
-import io.cucumber.java.Scenario;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
-import org.jetbrains.annotations.NotNull;
-import utils.FailureHandler;
+import managers.PageObjectManager;
+import utils.MobileDriverFactory;
 
 import java.net.MalformedURLException;
 import java.net.URISyntaxException;
 
 public class Hooks extends BaseTest {
-    private final FailureHandler failureHandler = new FailureHandler();
 
-//    @Before
-//    public void beforeScenario() throws MalformedURLException, URISyntaxException {
-//        mobileDriverFactory.createLocalAndroidDriver();
-//    }
+    @Before
+    public void beforeScenario() throws MalformedURLException, URISyntaxException {
+        mobileDriverFactory = new MobileDriverFactory();
+        mobileDriverFactory.createLocalAndroidDriver();
+        mobileDriverFactory.setImplicitlyWait();
+        pages = new PageObjectManager(mobileDriverFactory.getDriver());
+    }
 
     @After
-    public void afterScenario(@NotNull Scenario scenario) {
-//        if (scenario.isFailed()) {
-//            failureHandler.takeScreenshot(scenario);
-//            System.out.println(mobileDriverFactory.getScreenSource());
-
+    public void afterScenario() {
         mobileDriverFactory.getDriver().quit();
     }
 }

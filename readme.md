@@ -6,9 +6,10 @@ Min. required installations:
 
 Before you run your tests you have to:
 - Run `Appium` server
+- Connect real device
 
-And then you can run your tests:
-- `clean test --tests runners.AndroidRunner` in your Gradle project. 
+And then you can run your tests (while being in the project location):
+- `./gradlew test` 
 
 If we wanted to automate iOS as well we need to add into screen.java files:
 ```
