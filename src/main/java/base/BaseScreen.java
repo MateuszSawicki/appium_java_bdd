@@ -1,7 +1,10 @@
 package base;
 
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.TouchAction;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
+import io.appium.java_client.touch.WaitOptions;
+import io.appium.java_client.touch.offset.PointOption;
 import org.jetbrains.annotations.NotNull;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
@@ -27,7 +30,7 @@ public class BaseScreen {
         targetElement.click();
     }
 
-    protected void sendKeys(WebElement targetElement, String text) {
+    protected void sendKeys(@NotNull WebElement targetElement, String text) {
         targetElement.sendKeys(text);
     }
 
@@ -41,4 +44,6 @@ public class BaseScreen {
             throw e;
         }
     }
+
+
 }
