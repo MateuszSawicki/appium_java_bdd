@@ -1,3 +1,5 @@
+Important: Change name of file "sharedlocal.properties" to "local.properties" and fill the data.
+
 Min. required installations:
 - Appium 2.0
 - Java 8
