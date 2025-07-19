@@ -50,4 +50,14 @@ public class PurchaseSteps extends BaseTest {
     public void theCompletePurchaseScreenIsDisplayed() {
         Assert.assertTrue(pages.getCheckoutCompleteScreen().isOrderSuccessLblDisplayed());
     }
+
+    @When("user removes item from the cart")
+    public void userRemovesItemFromTheCart() {
+        pages.getYourCartScreen().clickOnRemoveBtn();
+    }
+
+    @Then("the item is removed from the cart")
+    public void theItemIsRemovedFromTheCart() {
+        Assert.assertFalse(pages.getYourCartScreen().isElementDisplayed());
+    }
 }

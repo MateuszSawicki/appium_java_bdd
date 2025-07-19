@@ -17,12 +17,26 @@ public class YourCartScreen extends BaseScreen {
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='CHECKOUT']")
     WebElement btnCheckout;
 
+    @AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc='test-REMOVE']")
+    WebElement btnRemove;
+
     public void clickCheckoutBtn() {
         click(btnCheckout);
+    }
+
+    public void clickOnRemoveBtn() {
+        click(btnRemove);
     }
 
     public boolean isTextDisplayed(String Text) {
         return isGivenTextDisplayed(lblFirstAddedItem,Text);
     }
+
+    public boolean isElementDisplayed() {
+        return isElementDisplayed(lblFirstAddedItem);
+    }
+
+
+
 }
 

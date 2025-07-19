@@ -11,6 +11,7 @@ public class PageObjectManager {
     CheckoutInformationScreen checkoutInformationScreen;
     CheckoutOverviewScreen checkoutOverviewScreen;
     CheckoutCompleteScreen checkoutCompleteScreen;
+    FilterScreen filterScreen;
 
     public PageObjectManager(AppiumDriver mobileDriver) {
         this.mobileDriver = mobileDriver;
@@ -44,5 +45,10 @@ public class PageObjectManager {
     public CheckoutCompleteScreen getCheckoutCompleteScreen() {
         return (checkoutCompleteScreen == null) ? checkoutCompleteScreen = new CheckoutCompleteScreen(this.mobileDriver):
                 checkoutCompleteScreen;
+    }
+
+    public FilterScreen getFilterScreen() {
+        return (filterScreen == null) ? filterScreen = new FilterScreen(this.mobileDriver):
+                filterScreen;
     }
 }

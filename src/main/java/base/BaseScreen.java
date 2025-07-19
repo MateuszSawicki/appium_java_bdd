@@ -1,10 +1,7 @@
 package base;
 
 import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.TouchAction;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
-import io.appium.java_client.touch.WaitOptions;
-import io.appium.java_client.touch.offset.PointOption;
 import org.jetbrains.annotations.NotNull;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.StaleElementReferenceException;
@@ -18,7 +15,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import utils.PropertiesLoader;
 
 import java.time.Duration;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.NoSuchElementException;
 
@@ -62,35 +58,20 @@ public class BaseScreen {
         }
     }
 
-//    public void swipeFromTo(int x1, int y1, int x2, int y2, int durationMs) {
-//        PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
-//        Sequence swipe = new Sequence(finger, 1);
-//
-//        swipe.addAction(finger.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), x1, y1));
-//        swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
-//        swipe.addAction(finger.createPointerMove(Duration.ofMillis(durationMs), PointerInput.Origin.viewport(), x2, y2));
-//        swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
-//
-//        mobileDriver.perform(Collections.singletonList(swipe));
-//    }
-
     public void swipeFromToFraction(
             double startXFraction, double startYFraction,
             double endXFraction, double endYFraction,
             int durationMs
     ) {
-        // Pobierz wymiary ekranu
         Dimension screenSize = mobileDriver.manage().window().getSize();
         int width = screenSize.getWidth();
         int height = screenSize.getHeight();
 
-        // Przelicz ułamki na piksele
         int x1 = (int) (width * startXFraction);
         int y1 = (int) (height * startYFraction);
         int x2 = (int) (width * endXFraction);
         int y2 = (int) (height * endYFraction);
 
-        // W3C swipe
         PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
         Sequence swipe = new Sequence(finger, 1);
 
